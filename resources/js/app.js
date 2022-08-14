@@ -1,8 +1,11 @@
 import './bootstrap';
+import { createApp } from 'vue'
 
-import { createApp } from 'vue';
+// import VueRouter from 'vue-router';
+import VueAxios from 'vue-axios';
+import axios from 'axios';
+import App from './App.vue';
+import router from './routes';
 
-import app from './components/app.vue';
-
-createApp(app).mount('#app')
+createApp(App).use(router).mount("#app");
 

@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name:"update-category",
     data(){
@@ -48,7 +49,7 @@ export default {
     },
     methods:{
         async showCategory(){
-            await this.axios.get(`/api/category/${this.$route.params.id}`).then(response=>{
+            await axios.get(`/api/categories/${this.$route.params.id}`).then(response=>{
                 const { title, description } = response.data
                 this.category.title = title
                 this.category.description = description
@@ -57,7 +58,7 @@ export default {
             })
         },
         async update(){
-            await this.axios.post(`/api/category/${this.$route.params.id}`,this.category).then(response=>{
+            await axios.post(`/api/categories/${this.$route.params.id}`,this.category).then(response=>{
                 this.$router.push({name:"categoryList"})
             }).catch(error=>{
                 console.log(error)

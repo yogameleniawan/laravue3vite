@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name:"categories",
     data(){
@@ -56,7 +57,7 @@ export default {
     },
     methods:{
         async getCategories(){
-            await this.axios.get('/api/category').then(response=>{
+            await axios.get('/api/categories').then(response=>{
                 this.categories = response.data
             }).catch(error=>{
                 console.log(error)
@@ -65,7 +66,7 @@ export default {
         },
         deleteCategory(id){
             if(confirm("Are you sure to delete this category ?")){
-                this.axios.delete(`/api/category/${id}`).then(response=>{
+                axios.delete(`/api/categories/${id}`).then(response=>{
                     this.getCategories()
                 }).catch(error=>{
                     console.log(error)

@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name:"add-category",
     data(){
@@ -44,7 +45,7 @@ export default {
     },
     methods:{
         async create(){
-            await this.axios.post('/api/category',this.category).then(response=>{
+            await axios.post('/api/categories',this.category).then(response=>{
                 this.$router.push({name:"categoryList"})
             }).catch(error=>{
                 console.log(error)
